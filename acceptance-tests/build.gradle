@@ -25,7 +25,7 @@ test.mustRunAfter(
 )
 
 // we must copy the h2-schema.sql script into the resources folder of this module in order for the tests
-// to be able to create the in-memory database successfull when initialising the connection
+// to be able to create the in-memory database successful when initialising the connection
 task copyTestResources(type: Copy) {
     println "Copying resource"
     from "${project(':application:dataproviders').buildDir}/resources/main/h2-schema.sql"
