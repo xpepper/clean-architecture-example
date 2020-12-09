@@ -18,7 +18,7 @@ public class GetBroadbandAccessDeviceDetailsUseCaseTest {
 
     @Test
     public void returnsDeviceDetails() throws Exception {
-        BroadbandAccessDevice expectedDevice = givenADeviceIsFound();
+        BroadbandAccessDevice expectedDevice = givenADeviceIsFoundWithHostname("hostname1");
 
         BroadbandAccessDevice actualDevice = getBroadbandAccessDeviceDetailsUseCase.getDeviceDetails("hostname1");
 
@@ -32,9 +32,9 @@ public class GetBroadbandAccessDeviceDetailsUseCaseTest {
         assertThatExceptionOfType(DeviceNotFoundException.class).isThrownBy(() -> getBroadbandAccessDeviceDetailsUseCase.getDeviceDetails("hostname1"));
     }
 
-    private BroadbandAccessDevice givenADeviceIsFound() {
-        BroadbandAccessDevice expectedDevice = new BroadbandAccessDevice("hostname1", "serialNumber", ADSL);
-        when(getDeviceDetails.getDetails("hostname1")).thenReturn(expectedDevice);
+    private BroadbandAccessDevice givenADeviceIsFoundWithHostname(String hostname) {
+        BroadbandAccessDevice expectedDevice = new BroadbandAccessDevice(hostname, "serialNumber", ADSL);
+        when(getDeviceDetails.getDetails(hostname)).thenReturn(expectedDevice);
         return expectedDevice;
     }
 
