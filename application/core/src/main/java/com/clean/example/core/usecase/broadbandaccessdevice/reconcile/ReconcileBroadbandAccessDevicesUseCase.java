@@ -29,12 +29,12 @@ public class ReconcileBroadbandAccessDevicesUseCase {
             String serialNumberInModel = getSerialNumberFromModel.getSerialNumber(hostname);
 
             String serialNumberFromReality = getSerialNumberFromReality.getSerialNumber(hostname);
-            if(noSerialNumberInReality(serialNumberFromReality) || isInvalid(serialNumberFromReality)) {
+            if (noSerialNumberInReality(serialNumberFromReality) || isInvalid(serialNumberFromReality)) {
                 onFailure.auditFailure();
                 continue;
             }
 
-            if(noSerialNumberInModel(serialNumberInModel) || serialNumberIsDifferentInReality(serialNumberInModel, serialNumberFromReality)) {
+            if (noSerialNumberInModel(serialNumberInModel) || serialNumberIsDifferentInReality(serialNumberInModel, serialNumberFromReality)) {
                 updateSerialNumberInModel.updateSerialNumber(hostname, serialNumberFromReality);
                 onSuccess.auditSuccess();
             }

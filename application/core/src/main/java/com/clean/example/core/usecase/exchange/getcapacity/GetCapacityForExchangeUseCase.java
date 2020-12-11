@@ -28,7 +28,7 @@ public class GetCapacityForExchangeUseCase {
 
     private void failIfExchangeDoesNotExist(String exchangeCode) {
         boolean exchangeExists = doesExchangeExist.doesExchangeExist(exchangeCode);
-        if(!exchangeExists) {
+        if (!exchangeExists) {
             throw new ExchangeNotFoundException();
         }
     }

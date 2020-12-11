@@ -13,7 +13,7 @@ public class GetBroadbandAccessDeviceDetailsUseCase {
     public BroadbandAccessDevice getDeviceDetails(String hostname) {
         BroadbandAccessDevice device = getDeviceDetails.getDetails(hostname);
 
-        if(device == null) {
+        if (device == null) {
             throw new DeviceNotFoundException();
         }
 
