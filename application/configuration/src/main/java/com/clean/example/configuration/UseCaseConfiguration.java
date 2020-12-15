@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 public class UseCaseConfiguration {
 
     @Bean
-    public ReconcileBroadbandAccessDevicesUseCase reconcileBroadbandAccessDevicesUseCas(GetAllDeviceHostnames getDeviceDetailsFromMode, GetSerialNumberFromModel getSerialNumberFromModel, GetSerialNumberFromReality getSerialNumberFromReality, UpdateSerialNumberInModel updateSerialNumberInModel) {
-        return new ReconcileBroadbandAccessDevicesUseCase(getDeviceDetailsFromMode, getSerialNumberFromModel, getSerialNumberFromReality, updateSerialNumberInModel);
+    public ReconcileBroadbandAccessDevicesUseCase reconcileBroadbandAccessDevicesUseCas(GetAllDeviceHostnames getAllDeviceHostnames, GetSerialNumberFromModel getSerialNumberFromModel, GetSerialNumberFromReality getSerialNumberFromReality, UpdateSerialNumberInModel updateSerialNumberInModel) {
+        return new ReconcileBroadbandAccessDevicesUseCase(getAllDeviceHostnames, getSerialNumberFromModel, getSerialNumberFromReality, updateSerialNumberInModel);
     }
 
     @Bean
