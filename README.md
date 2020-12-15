@@ -57,8 +57,8 @@ Of course, it comes at a cost:
 
 ##### Core: Use Cases
 * Represent your business actions, it’s what you can do with the application. Expect one use case for each business action
-* Pure business logic, plain java (expect maybe some utils libraries like StringUtils)
-* Define interfaces for the data that they need in order to apply some logic. One or more dataproviders will implement the interface, but the use case doesn’t know where the data is coming from
+* Pure business logic, plain java (expect maybe some utils libraries like `StringUtils`)
+* Define interfaces for the data that they need in order to apply some logic. One or more dataproviders will implement the interface, but the use case doesn't know where the data is coming from
 * The use case doesn't know who triggered it and how the results are going to be presented (e.g. could be on a web page, or returned as json, or simply logged, etc.)
 * Throws business exceptions
 
