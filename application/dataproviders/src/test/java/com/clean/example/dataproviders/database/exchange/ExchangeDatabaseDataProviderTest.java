@@ -13,9 +13,9 @@ public class ExchangeDatabaseDataProviderTest {
 
     private static final String EXCHANGE_CODE = "exch1";
 
-    JdbcTemplate jdbcTemplace = mock(JdbcTemplate.class);
+    JdbcTemplate jdbcTemplate = mock(JdbcTemplate.class);
 
-    ExchangeDatabaseDataProvider exchangeDatabaseDataProvider = new ExchangeDatabaseDataProvider(jdbcTemplace);
+    ExchangeDatabaseDataProvider exchangeDatabaseDataProvider = new ExchangeDatabaseDataProvider(jdbcTemplate);
 
     @Test
     public void falseWhenExchangeDoesNotExist() throws Exception {
@@ -36,11 +36,11 @@ public class ExchangeDatabaseDataProviderTest {
     }
 
     private void givenExchangeExists() {
-        when(jdbcTemplace.queryForObject(anyString(), eq(Integer.class), eq(EXCHANGE_CODE))).thenReturn(1);
+        when(jdbcTemplate.queryForObject(anyString(), eq(Integer.class), eq(EXCHANGE_CODE))).thenReturn(1);
     }
 
     private void givenExchangeDoesNotExist() {
-        when(jdbcTemplace.queryForObject(anyString(), eq(Integer.class), eq(EXCHANGE_CODE))).thenReturn(0);
+        when(jdbcTemplate.queryForObject(anyString(), eq(Integer.class), eq(EXCHANGE_CODE))).thenReturn(0);
     }
 
 }
