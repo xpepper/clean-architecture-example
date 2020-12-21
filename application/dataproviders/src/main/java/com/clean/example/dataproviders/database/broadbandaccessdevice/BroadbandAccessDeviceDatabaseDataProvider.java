@@ -106,16 +106,17 @@ public class BroadbandAccessDeviceDatabaseDataProvider implements GetAllDeviceHo
                 "WHERE d.device_type_id = dt.id " +
                 "AND d.exchange_id = e.id " +
                 "AND e.code = ?", exchangeCode);
-        List<BroadbandAccessDevice> broadbandAccessDevices = rows.stream().map(row -> {
-                    String hostname = (String) row.get("hostname");
-                    String serialNumber = (String) row.get("serial_number");
-                    DeviceType deviceType = DeviceType.valueOf((String) row.get("type"));
-                    int availablePorts = ((BigDecimal) row.get("available_ports")).intValue();
-                    BroadbandAccessDevice broadbandAccessDevice = new BroadbandAccessDevice(hostname, serialNumber, deviceType);
-                    broadbandAccessDevice.setAvailablePorts(availablePorts);
-                    return broadbandAccessDevice;
-        }).collect(toList());
 
-        return broadbandAccessDevices;
+        return rows.stream().map(this::toBroadbandAccessDevice).collect(toList());
+    }
+
+    private BroadbandAccessDevice toBroadbandAccessDevice(Map<String, Object> row) {
+        String hostname = (String) row.get("hostname");
+        String serialNumber = (String) row.get("serial_number");
+        DeviceType deviceType = DeviceType.valueOf((String) row.get("type"));
+        int availablePorts = ((BigDecimal) row.get("available_ports")).intValue();
+        BroadbandAccessDevice broadbandAccessDevice = new BroadbandAccessDevice(hostname, serialNumber, deviceType);
+        broadbandAccessDevice.setAvailablePorts(availablePorts);
+        return broadbandAccessDevice;
     }
 }
